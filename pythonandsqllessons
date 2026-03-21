@@ -1,23 +1,83 @@
 
-#Guess the database
-print("What is the database?")
-number = int(input("Enter number"))
+# #Guess the database
+# print("What is the database?")
+# number = int(input("Enter number"))
 
-if number == 2:
-    print("Correct. Now tell your mentor how you did it.")
-else:
-    print("Wrong try again")
+# if number == 2:
+#     print("Correct. Now tell your mentor how you did it.")
+# else:
+#     print("Wrong try again")
 
-#Connect to SQLite database
+# #Connect to SQLite database
+# import sqlite3
+
+# database = 'database.sqlite'
+
+# import pandas as pd
+# tables = pd.read.sql("""SELECT *
+#                      FROM sqlite_master
+#                      WHERE type='table';""", conn)
+# tables
+
+
+# #After class project
+# import sqlite3
+
+# database = 'database.sqlite3'
+
+# import pandas as pd
+# tables = pd.read.sql("""SELECT * FORM sqlite_master
+#                      WHERE type='table';""",conn)
+# tables
+
+
+
+
+
+# #-------------------------------------------------------
+
+#BASIC SQL STATEMENTS.
+
 import sqlite3
-
-database = 'database.sqlite'
-
 import pandas as pd
-tables = pd.read.sql("""SELECT *
-                     FROM sqlite_master
-                     WHERE type='table';""", conn)
+
+tables = pd.read_sql("""Select * from sqlite_master WHERE type='table';""", conn
+                     )
 tables
+
+#BSS-2
+tables = pd.read_sql("""Select * from match;""", 
+                    conn)
+tables
+
+#Play with Tables
+matches = pd.read_sql("""
+CREATE TABLE Matches (
+Matches_id INT PRRIMARY KEY,
+TEAM_NAME VARCHAR(20),
+WINS DECIMAL(10,2),
+POINTS DECIMAL(10,2)
+                                      
+                      );
+INSERT Matches_id INTO 
+                      VALUES
+                    ('1', 'Blue Jays', 10, 10.2)
+                      ('2', 'Chicago bears', 8, 3.2)
+
+                      Select * from matches_id where TEAM_NAME like 'Bl%';
+                      SELECT * FROM MATCHES_ID WHERE TEAM_NAME LIKE 'Ch%';
+                      select * from matches_id where POINTS >= 3.2;
+                      select * from matches_id where wins = 3.2;
+                      select * from matches_id;
+                      select * from min(PRICE);
+                      select* from max(PRICE);
+                      select * from mathces_id where PRICE in (1,2);
+                    
+
+                      """)
+matches
+
+
 
 
 
