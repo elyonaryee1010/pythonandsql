@@ -79,6 +79,61 @@ matches
 
 
 
+#Play with Tables - Part 2
+file = files.upload()
+
+import sqlite3
+
+database = 'database.sqlite'
+
+conn = sqlite3.connect(database)
+print('Opened data succesfully')
+
+import pandas as pd
+tables = pd.read_sql("""Select * from sqlite_master where type='table
+';""", conn)
+tables
+
+matches = pd.read_sql("""Select * from match
+                      ;""", conn)
+matches.head()
+
+result1 = pd.read_sql("""Select avg(win_margin), match_winner
+                      from match
+                      where season_id == 9
+                      group by match_winner
+                      order by avg(win_margin);""", conn)
+result1
+
+result2 = pd.read_sql("""select count(distinct venue_id)
+                       from match
+                       where season_id == 9;""", conn)
+result2
+
+result3 = pd.read_sql("""SELECT MIN(win_margin), max(win_margin), avg(win_margin), count(distinct(man_of_the_match)""", conn)
+result3
+
+result4 = pd.read_sql("""SELECT SUM(WIN MARGIN)
+                       FROM MATCH WHERE SEASON_ID == 9""", conn)
+result4
+               
+
+
+
+
+
+
+
+
+
+
+
+  
+            
+        
+
+
+
 
 
 
