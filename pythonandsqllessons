@@ -126,6 +126,43 @@ result4
 
 
 
+from google.colab import files
+file = files.upload()
+
+import sqlite3
+
+conn = sqlite3.connect('database.sqlite')
+
+print("Opened Database successfully")
+
+conn.execute('''CREATE TABLE CLLASS_10
+              SNO INT PRIMARY KEY NOT NULL,
+              Roll_no INT NOT NULL
+              NAME TEXT NOT NULL,
+              AGE INT DEFAULT(15),
+              GENDER TEXT NOT NULL,
+              EMAIL_ID TEXT NOT NULL,
+              CONTACT_NO REAL NOT NULL);''')
+
+print("Table created successfully")
+
+conn.execute("INSERT INTO CLASS_10 (SNO, ROLL_NO, NAME, AGE, GENDER, EMAIL_ID, CONTACT_NO)")
+VALUES ('1', '1', 'John', '14','Male', 'john@gmail.com', 90967988669)");
+
+conn.comit()
+print("Records done")
+
+import pandas as pd
+tables = pd.read_sql("""SELECT* FROM where type='table';""", CONN)
+
+class_10d = pd.read_sql("""SELECT * FROM CLASS_10;""", CONN)
+
+class_10d.head()
+
+
+
+
+
 
 
   
