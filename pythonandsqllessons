@@ -166,6 +166,47 @@ class_10d.head()
 
 
   
+#FIND THE NULLS
+import sqlite3
+
+import pandas as pd
+
+print("Result is ready")
+
+conn.execute('''CREATE TABLE CLASS9
+             SNO INT PRIMARY KEY,
+             NAME NOT NULL,
+             AGE NOT NULL,
+             GRADE NOT NULL''', conn);
+
+print("database opened succesfully")
+
+conn.execute("""INSERT INTO CLASS_9(SNO, ROLL_NO, NAME, AGE, GRADE) VALUES ('1', '1', 'Alice', '7', 'Grade 7')""");
+conn.commit()
+print("Records done")        
+
+import pandas as pd
+
+tables = pd.read_sql("""SELECT FROM WHERE TYPE = 'TABLE'""", conn);
+
+
+tables
+
+
+class_9d = pd.read_sql("""SELECT * FROM CLASS_9;""", CONN)
+
+class_9d.head()
+
+
+
+             
+             
+
+
+
+
+
+
             
         
 
