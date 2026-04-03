@@ -213,6 +213,48 @@ class_9d.head()
 
 
 
+#Joins in SQL
+from google.colab import files
+uploaded = files.upload()
+
+import numpy as np
+import pandas as pd
+import sqlite3
+
+database = 'database.slite'
+
+conn = sqlite3.connect(database)
+
+tables = pd.read_sql("""SELECT FROM sqlite_master WHERE TYPE='TABLES';""", conn)
+tables
+
+joined_city = pd.read_sql("""SELECT c.Country_id, c.Country_name, ci.City_Name from country c INNER JOIN city ci ON c.Country_id == ci.Country_id;""", conn)
+joined_city
+
+joined_left = pd.read_sql("""SELECT * FORM PLAYER LEFT JOIN SEASON on player.player_id == season.man_of_the_series""", conn)
+joined_left
+
+joined_cross = pd.read_sql("""Select c.country_id, c.country_name, ci.city_name from country c cross join city ci""", conn)
+joined_cross
+
+union = pd.read_sql(""""SELECT PLAYER_NAME FORM PLAYER UNION SELECT TEAM_NAME FORM TEAM""", conn)
+union
+
+
+
+
+
+
+
+
+             
+             
+
+
+
+
+
+
 
 
 
