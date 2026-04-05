@@ -247,6 +247,60 @@ union
 
 
 
+
+#Query in suquery
+from google.colab import files
+uploaded = files.upload()
+
+import pandas as pd
+import numpy as np
+from datetime import datetime
+import sqlite3
+
+database = 'database.sqlite'
+
+conn = sqlite3.connect(database)
+
+tables = pd.read_sql(""""Select * from sqlite_master where type='table';""", conn)
+tables
+
+match_details = pd.read_sql('''Select season_id, match_id,
+                            v.venue_name, c.city_name, t.Team_name as winner from match
+                            inner join venue as v on match.venue_id == venue_id
+                            inner join city as c on v.city_id == c.city_id
+                            inner join team as t on match.match_winner = t.team_id''', conn)
+
+match_details
+
+match_runs = pd.read_sql("""Select match_id, runs_scord as total_runs, innings_no from batsman_scored
+                        where innings_no ==1 and runs_scored >
+                         (Select avg(runs_scored)""", conn)
+
+print("Matches with scored runs greater than average")
+match_runs
+
+avg_runs = pd.read_sql("""Select match_id, runs_scored as total_runs, innings_no 
+                       from batsman_scored
+                       where innings_no ==1 and runs_score> (select avg(runs_scored)""", conn)
+
+print("matches with scored runs greater than average scored runs")
+avg_runs
+
+
+
+
+
+
+
+
+             
+             
+
+
+
+
+
+
              
              
 
